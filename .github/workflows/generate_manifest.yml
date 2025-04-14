@@ -19,9 +19,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: pip install hashlib json
-
       - name: Generate manifest with hashes
         run: python generate_manifest.py
 
