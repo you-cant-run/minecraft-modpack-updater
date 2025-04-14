@@ -6,12 +6,14 @@
             {
                 "name": "CoolMod.jar",
                 "version": "1.0.0",
-                "file": "your-modpack-repo/mods/CoolMod.jar"
+                "file": "your-modpack-repo/mods/CoolMod.jar",
+                "sha256": "6998001ddc9dc0dc40e8499f16aa5f09c3a3db3bed67906a710281a2ae53809e"
             },
             {
                 "name": "UselessMod.jar",
                 "version": "1.0.0",
-                "file": "your-modpack-repo/mods/UselessMod.jar"
+                "file": "your-modpack-repo/mods/UselessMod.jar",
+                "sha256": "cf341cbcac880de683e2329ce09e45f24bf6c9ef3e90d41c93411a0f6ae11049"
             }
         ]
     }
