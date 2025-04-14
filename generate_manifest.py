@@ -4,7 +4,7 @@ import hashlib
 
 MODS_DIR = "mods"
 MANIFEST_FILE = "manifest.json"
-BASE_URL = "https://raw.githubusercontent.com/you-cant-run/minecraft-modpack-updater/main/your-modpack-repo/mods"
+BASE_URL = "your-modpack-repo/mods"
 
 def calculate_sha256(filepath):
     sha256 = hashlib.sha256()
