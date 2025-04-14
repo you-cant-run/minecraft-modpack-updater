@@ -19,10 +19,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install requirements
-        run: pip install -r requirements.txt || true
+      - name: Install dependencies
+        run: pip install hashlib json
 
-      - name: Generate manifest
+      - name: Generate manifest with hashes
         run: python generate_manifest.py
 
       - name: Check for changes
@@ -34,4 +34,4 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add manifest.json
-          git diff --quiet || git commit -m "Auto-update manifest" && git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+          git diff --quiet || git commit -m "Auto-update manifest with SHA256 hashes" && git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
