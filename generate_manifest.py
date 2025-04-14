@@ -1,31 +1,32 @@
 import os
 import json
-import hashlib
 
-MODS_DIR = "mods"
-MANIFEST_FILE = "manifest.json"
-BASE_URL = "your-modpack-repo/mods"
-
-def calculate_sha256(filepath):
-    sha256 = hashlib.sha256()
-    with open(filepath, "rb") as f:
-        for chunk in iter(lambda: f.read(4096), b""):
-            sha256.update(chunk)
-    return sha256.hexdigest()
+MODS_DIR = "your-modpack-repo/mods"  # Updated to the correct subfolder path
 
 def generate_manifest():
-    manifest = {}
+    mods = []
+
+    # Ensure the mods folder exists
+    if not os.path.exists(MODS_DIR):
+        print(f"Error: The folder {MODS_DIR} does not exist!")
+        return
+
+    # Read the mods in the specified directory
     for filename in os.listdir(MODS_DIR):
         if filename.endswith(".jar"):
-            filepath = os.path.join(MODS_DIR, filename)
-            file_hash = calculate_sha256(filepath)
-            manifest[filename] = {
-                "url": BASE_URL + filename,
-                "sha256": file_hash
-            }
-    with open(MANIFEST_FILE, "w") as f:
-        json.dump(manifest, f, indent=4)
-    print(f"Manifest generated with {len(manifest)} mods.")
+            mod_name = filename  # Using just the filename here
+            mods.append(mod_name)
 
-if __name__ == "__main__":
-    generate_manifest()
+    # Create manifest data
+    manifest = {
+        "version": "1.0",
+        "mods": mods
+    }
+
+    # Write manifest to file
+    with open("manifest.json", "w") as f:
+        json.dump(manifest, f, indent=4)
+    print("Manifest has been updated!")
+
+# Run the manifest generation
+generate_manifest()
