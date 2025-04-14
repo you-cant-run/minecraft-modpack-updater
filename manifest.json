@@ -1,0 +1,18 @@
+{
+    "modpack": {
+        "name": "My Modpack",
+        "version": "1.0.0",
+        "mods": [
+            {
+                "name": "CoolMod.jar",
+                "version": "1.0.0",
+                "file": "your-modpack-repo/mods/CoolMod.jar"
+            },
+            {
+                "name": "UselessMod.jar",
+                "version": "1.0.0",
+                "file": "your-modpack-repo/mods/UselessMod.jar"
+            }
+        ]
+    }
+}
