@@ -26,12 +26,16 @@ jobs:
         run: python generate_manifest.py
 
       - name: Check for changes
-        run: |
-          git diff --exit-code || echo "Changes detected"
+        run: git diff
 
-      - name: Commit and push manifest
+      - name: Commit changes if needed
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add manifest.json
-          git diff --quiet || git commit -m "Auto-update manifest" && git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update manifest"
+          fi
+
+      - name: Push changes
+        run: git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
