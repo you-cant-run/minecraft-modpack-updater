@@ -1,2 +1,2 @@
 # minecraft-modpack-updater
-- i hate my life
+- i hate fish for no dam reason lol
