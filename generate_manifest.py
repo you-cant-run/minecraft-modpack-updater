@@ -1,32 +1,34 @@
-import os
-import json
+name: Generate and Push Manifest
 
-MODS_DIR = "your-modpack-repo/mods"  # Updated to the correct subfolder path
+on:
+  push:
+    paths:
+      - 'your-modpack-repo/mods/**'
+      - '.github/workflows/generate_manifest.yml'
 
-def generate_manifest():
-    mods = []
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    # Ensure the mods folder exists
-    if not os.path.exists(MODS_DIR):
-        print(f"Error: The folder {MODS_DIR} does not exist!")
-        return
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    # Read the mods in the specified directory
-    for filename in os.listdir(MODS_DIR):
-        if filename.endswith(".jar"):
-            mod_name = filename  # Using just the filename here
-            mods.append(mod_name)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
-    # Create manifest data
-    manifest = {
-        "version": "1.0",
-        "mods": mods
-    }
+      - name: Install requirements
+        run: pip install -r requirements.txt || true
 
-    # Write manifest to file
-    with open("manifest.json", "w") as f:
-        json.dump(manifest, f, indent=4)
-    print("Manifest has been updated!")
+      - name: Generate manifest
+        run: python generate_manifest.py
 
-# Run the manifest generation
-generate_manifest()
+      - name: Commit and push manifest
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add manifest.json
+          git commit -m "Auto-update manifest"
+          git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
