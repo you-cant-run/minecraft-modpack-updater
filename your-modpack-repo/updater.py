@@ -356,7 +356,7 @@ class ModUpdaterApp:
         about_text = f"""
         Minecraft Modpack Updater
         Version: 1.0
-        Author: Your Name
+        Author: Ze-Chrome, ycr
         
         Features:
         - Automatic mod updates
