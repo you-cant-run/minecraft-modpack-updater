@@ -4,7 +4,9 @@ on:
   push:
     paths:
       - 'your-modpack-repo/mods/**'
+      - 'your-modpack-repo/config/**'
       - '.github/workflows/generate_manifest.yml'
+      - 'generate_manifest.py'
 
 jobs:
   build:
