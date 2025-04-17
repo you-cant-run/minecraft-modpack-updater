@@ -1,12 +1,11 @@
-name: Generate and Push Manifest
+name: Generate Manifest
 
 on:
   push:
     paths:
       - 'your-modpack-repo/mods/**'
-      - 'your-modpack-repo/config/**'
+      - 'your-modpack-repo/config/**'  # Now watches config folder too
       - '.github/workflows/generate_manifest.yml'
-      - 'generate_manifest.py'
 
 jobs:
   build:
@@ -21,23 +20,18 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install requirements
-        run: pip install -r requirements.txt || true
-
       - name: Generate manifest
         run: python generate_manifest.py
 
       - name: Check for changes
         run: git diff
 
-      - name: Commit changes if needed
+      - name: Commit and push changes
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add manifest.json
           if ! git diff --cached --quiet; then
-            git commit -m "Auto-update manifest"
+            git commit -m "Auto-update manifest (mods + configs)"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
           fi
-
-      - name: Push changes
-        run: git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
