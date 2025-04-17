@@ -5,21 +5,15 @@
         "mods": [
             {
                 "name": "CoolMod.jar",
-                "file": "your-modpack-repo/mods/CoolMod.jar",
-                "sha256": "8fc812cb7d8a52a98d197dc339171c5c5aeb45f9b8987c79b06c80f52b8bff11"
+                "file": "mods/CoolMod.jar",
+                "sha256": "a4226cecb5b898ded09210cd07a4d778fdb29fb595aa823eb90f854545be614e"
             },
             {
                 "name": "UselessMod.jar",
-                "file": "your-modpack-repo/mods/UselessMod.jar",
+                "file": "mods/UselessMod.jar",
                 "sha256": "cf341cbcac880de683e2329ce09e45f24bf6c9ef3e90d41c93411a0f6ae11049"
             }
         ],
-        "config": [
-            {
-                "name": "test.jar",
-                "file": "your-modpack-repo/config/test.jar",
-                "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
-            }
-        ]
+        "configs": []
     }
 }
