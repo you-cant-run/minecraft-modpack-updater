@@ -14,6 +14,12 @@
                 "sha256": "cf341cbcac880de683e2329ce09e45f24bf6c9ef3e90d41c93411a0f6ae11049"
             }
         ],
-        "configs": []
+        "configs": [
+            {
+                "name": "test.jar",
+                "path": "config/test.jar",
+                "sha256": "c036a7d480163c0e2b80bc6836b858ad9d9afc7d7b09c738805d9b1cb824d597"
+            }
+        ]
     }
 }
