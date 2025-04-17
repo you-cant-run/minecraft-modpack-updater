@@ -4,7 +4,7 @@ import hashlib
 
 MODS_DIR = 'your-modpack-repo/mods'
 CONFIG_DIR = 'your-modpack-repo/config'
-CONFIG_EXTS = ('.json', '.cfg', '.yml', '.yaml', '.properties', '.toml', '.jar')
+CONFIG_EXTS = ('.json', '.cfg', '.yml', '.yaml', '.properties', '.toml', '.jar', '.cfg')
 
 def compute_sha256(filepath):
     """Compute SHA256 hash of a file"""
