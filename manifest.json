@@ -19,6 +19,11 @@
                 "name": "test.jar",
                 "path": "config/test.jar",
                 "sha256": "c036a7d480163c0e2b80bc6836b858ad9d9afc7d7b09c738805d9b1cb824d597"
+            },
+            {
+                "name": "idk.cfg",
+                "path": "config/idk.cfg",
+                "sha256": "29377517fbedfb79fa9bf72de00cb8acacfc65dd13ed5ab12c0a80471fc2b53a"
             }
         ]
     }
