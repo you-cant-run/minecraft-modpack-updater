@@ -9,6 +9,7 @@ from datetime import datetime
 import sv_ttk  # For modern themes
 from typing import Optional, Callable
 from PIL import Image, ImageTk  # For icon handling
+import io
 
 # ========================
 # Configuration Management
@@ -356,7 +357,7 @@ class ModUpdaterApp:
         about_text = f"""
         Minecraft Modpack Updater
         Version: 1.0
-        Author: Ze-Chrome, ycr
+        Author: Ze-Chrome,ycr
         
         Features:
         - Automatic mod updates
